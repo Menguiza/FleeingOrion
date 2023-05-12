@@ -11,6 +11,7 @@ public class Level3ButtonPuzzle : MonoBehaviour
     [SerializeField] GameObject correctIndicator;
 
     [SerializeField] Material correctMaterial;
+    [SerializeField] Material puzzleFinishedMaterial;
     [SerializeField] Material incorrectMaterial;
     [SerializeField] Material neutralMaterial;
 
@@ -18,64 +19,90 @@ public class Level3ButtonPuzzle : MonoBehaviour
     public int CurrentIndex = 0;
 
     public bool HasChecked = false;
+    public bool puzzleCompleted = false;
 
     public void CheckIndex() //correct sequence is 0, 1, 2, 3
     {
-        if (!HasChecked)
+        //will refactor code after testing its full vr functionality
+        if (!HasChecked && !puzzleCompleted)
         {
             StartCoroutine(HasCheckedCooldown());
             if (CurrentIndex == expectedIndex)
             {
                 print("Correct!");
-                //StartCoroutine(flashMaterialCorrect());
+                StartCoroutine(flashMaterialCorrect());
                 expectedIndex++;
                 HasChecked = true;
+
+                if (expectedIndex > 3) expectedIndex = 3;
+
+                if (expectedIndex == 3 && CurrentIndex ==3)
+                {
+                    HasChecked = true;
+                    puzzleCompleted = true;
+                    StartCoroutine(flashMaterialPuzzleFinished());
+                    Debug.Log("Puzzle completed!");
+                }
+
                 return;
             }
             else
             {
                 print("Incorrect!");
 
-                //StartCoroutine(flashMaterialIncorrect());
+                StartCoroutine(flashMaterialIncorrect());
                 expectedIndex = 0;
                 HasChecked = true;
 
             }
 
-            if (CurrentIndex == expectedIndex && expectedIndex == 3)
-            {
-                correctIndicator.GetComponent<Renderer>().material = correctMaterial;
-                Debug.Log("Puzzle completed!");
-                HasChecked = true;
-
-            }
+           
         }
        
     }
     IEnumerator HasCheckedCooldown()
     {
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.75f);
         HasChecked = false;
     }
 
-    //IEnumerator flashMaterialCorrect()
-    //{
-    //    for(int i = 0; i < 5; i++) 
-    //    {
-    //        correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
-    //        yield return new WaitForSeconds(0.25f);
-    //        correctIndicator.GetComponent<Renderer>().material = correctMaterial;
-    //    }
-    //}
+    IEnumerator flashMaterialPuzzleFinished()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
+            yield return new WaitForSeconds(0.25f);
+            correctIndicator.GetComponent<Renderer>().material = puzzleFinishedMaterial;
+            yield return new WaitForSeconds(0.25f);
 
-    //IEnumerator flashMaterialIncorrect()
-    //{
-    //    for (int i = 0; i < 5; i++)
-    //    {
-    //        correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
-    //        yield return new WaitForSeconds(0.25f);
-    //        correctIndicator.GetComponent<Renderer>().material = incorrectMaterial;
-    //    }
-    //}
+        }
+        correctIndicator.GetComponent<Renderer>().material = puzzleFinishedMaterial;
+    }
+    IEnumerator flashMaterialCorrect()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
+            yield return new WaitForSeconds(0.15f);
+            correctIndicator.GetComponent<Renderer>().material = correctMaterial;
+            yield return new WaitForSeconds(0.15f);
+
+        }
+        correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
+    }
+
+    IEnumerator flashMaterialIncorrect()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
+            yield return new WaitForSeconds(0.15f);
+
+            correctIndicator.GetComponent<Renderer>().material = incorrectMaterial;
+            yield return new WaitForSeconds(0.15f);
+
+        }
+        correctIndicator.GetComponent<Renderer>().material = neutralMaterial;
+    }
 
 }
