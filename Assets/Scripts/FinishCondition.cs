@@ -19,9 +19,10 @@ public class FinishCondition : MonoBehaviour
         }
     }
 
-    public void GrabbedHelmet()
+    public void GrabbedHelmet(GameObject helmetObj)
     {
         helmet = true;
+        Destroy(helmetObj);
     }
 
     public void CodeCorrect()
