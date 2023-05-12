@@ -1,7 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Tilia;
+using Tilia.Interactions.Interactables.Interactables;
 
 public class FinishCondition : MonoBehaviour
 {
@@ -19,14 +20,22 @@ public class FinishCondition : MonoBehaviour
         }
     }
 
-    public void GrabbedHelmet(GameObject helmetObj)
+    public void GrabbedHelmet()
     {
         helmet = true;
-        Destroy(helmetObj);
     }
 
     public void CodeCorrect()
     {
         code = true;
+    }
+
+    private IEnumerator DestroyHelmet(InteractableFacade facade)
+    {
+        yield return new WaitUntil(() => !facade.IsGrabbed);
+
+        yield return new WaitForSeconds(1f);
+        
+        Destroy(facade.gameObject);
     }
 }
