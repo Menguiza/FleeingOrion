@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/3D.meta
+guid: 9fb805dd4c720384c9b0e7dda504368f
+folderAsset: yes
+========
 guid: 600e5d49b0a68254286400e32c53addc
 timeCreated: 1468506358
 licenseType: Store
+>>>>>>>> origin/Principal:Assets/Oculus/AudioManager/Scenes/Test.unity.meta
 DefaultImporter:
+  externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
