@@ -11,10 +11,12 @@ public class OnPlayerInteract : MonoBehaviour
     [SerializeField] private Vector3 onButtonPressOriginalPosition;
     [SerializeField] private Vector3 onButtonPressChangedPosition;
 
+    [SerializeField] float howMuchShouldGoDown = 0.75f;
+
     private void Awake()
     {
         originalButtonTransform = transform;
-        onButtonPressChangedPosition = originalButtonTransform.position - new Vector3(0, 0.75f, 0);
+        onButtonPressChangedPosition = originalButtonTransform.position - new Vector3(0, howMuchShouldGoDown, 0);
         onButtonPressOriginalPosition = originalButtonTransform.position;
     }
 

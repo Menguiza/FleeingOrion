@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Level3AllPuzzleStatuses : MonoBehaviour
 {
@@ -17,8 +18,21 @@ public class Level3AllPuzzleStatuses : MonoBehaviour
     public bool IsPuzzle2Completed;
     public bool IsPuzzle3Completed;
 
+    bool allPuzzlesCompleted;
+    [SerializeField] UnityEvent allPuzzlesCompletedEvent;
+
     //this is boilder plate code, but they requested us to finish the whole game in less than a week while not even the basic mechanics were done
     //hence why the not-very-elegant code
+
+    private void Update()
+    {
+        if (allPuzzlesCompleted)
+        {
+            print("all puzzles have been completed!");
+            allPuzzlesCompletedEvent.Invoke();
+        }
+    }
+
     public void OnButton1Activate()
     {
         print("Hub checking puzzle 1");
