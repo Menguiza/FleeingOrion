@@ -14299,8 +14299,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 65e7bd53a995c3c4aaded01a08822ae9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1223570249751d4fa263f83cc2ca86c, type: 3}
---- !u!64 &1779376260
-MeshCollider:
+--- !u!135 &1779376262
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -14309,10 +14309,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 3.4450347
+  m_Center: {x: 0.2, y: 3.27, z: -0.98}
 --- !u!1001 &1787530320
 PrefabInstance:
   m_ObjectHideFlags: 0
