@@ -17,48 +17,56 @@ public class Level3AllPuzzleStatuses : MonoBehaviour
     public bool IsPuzzle2Completed;
     public bool IsPuzzle3Completed;
 
+    //this is boilder plate code, but they requested us to finish the whole game in less than a week while not even the basic mechanics were done
+    //hence why the not-very-elegant code
     public void OnButton1Activate()
     {
-        if (IsPuzzle1Completed) 
+        print("Hub checking puzzle 1");
+        if (IsPuzzle1Completed)
         {
-            IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator1);
+            StartCoroutine(IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator1));
         }
         else
         {
-            IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator1);
+            StartCoroutine(IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator1));
         }
         
     }
 
     public void OnButton2Activate()
     {
+        print("Hub checking puzzle 2");
+
         if (IsPuzzle2Completed)
         {
-            IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator2);
+            StartCoroutine(IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator2));
         }
         else
         {
-            IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator2);
+            StartCoroutine(IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator2));
         }
 
     }
 
     public void OnButton3Activate()
     {
+        print("Hub checking puzzle 3");
+
         if (IsPuzzle3Completed)
         {
-            IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator3);
+            StartCoroutine(IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator3));
+            
         }
         else
         {
-            IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator3);
+            StartCoroutine(IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator3));
         }
 
     }
 
 
 
-    IEnumerable IE_FlickerMaterial(Material materialToFlashTo, GameObject correctIndicator)
+    IEnumerator IE_FlickerMaterial(Material materialToFlashTo, GameObject correctIndicator)
     {
         for (int i = 0; i < 5; i++)
         {
