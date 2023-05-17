@@ -9,6 +9,8 @@ TagManager:
   - Hand
   - redTank
   - blueTank
+  - TAZOFX
+  - Floor
   layers:
   - Default
   - TransparentFX
