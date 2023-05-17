@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class Level3ButtonPuzzle : MonoBehaviour
 {
     public int expectedIndex;
-    Level3AllPuzzleStatuses level3AllPuzzleStatuses;
+    [SerializeField] Level3AllPuzzleStatuses level3AllPuzzleStatuses;
 
     [SerializeField] GameObject correctIndicator;
 

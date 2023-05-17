@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class AllPuzzlesCompletedScriptedEvent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+   [SerializeField] GameObject particleSystem1, particleSystem2;
+   public void StartEndOfGame()
     {
-        
+        StartCoroutine(IE_EndOfGame());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator IE_EndOfGame()
     {
-        
+        yield return new WaitForSeconds(3f);
+        particleSystem1.SetActive(true);
+        yield return new WaitForSeconds(4f);
+        particleSystem2.SetActive(true);
+
+        //add load next level logic
+
+
     }
 }

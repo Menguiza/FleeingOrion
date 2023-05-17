@@ -21,21 +21,24 @@ public class Level3AllPuzzleStatuses : MonoBehaviour
     bool allPuzzlesCompleted;
     [SerializeField] UnityEvent allPuzzlesCompletedEvent;
 
+    bool levelShouldEnd;
     //this is boilder plate code, but they requested us to finish the whole game in less than a week while not even the basic mechanics were done
     //hence why the not-very-elegant code
 
     private void Update()
     {
-        if (allPuzzlesCompleted)
+        if (allPuzzlesCompleted && levelShouldEnd)
         {
             print("all puzzles have been completed!");
             allPuzzlesCompletedEvent.Invoke();
+            levelShouldEnd = true;
         }
     }
 
     public void OnButton1Activate()
     {
         print("Hub checking puzzle 1");
+
         if (IsPuzzle1Completed)
         {
             StartCoroutine(IE_FlickerMaterial(puzzleFinishedMaterial, correctIndicator1));
@@ -76,6 +79,11 @@ public class Level3AllPuzzleStatuses : MonoBehaviour
             StartCoroutine(IE_FlickerMaterial(puzzleWrongMaterial, correctIndicator3));
         }
 
+    }
+
+    public void TurnIsPuzzle3CompletedOn()
+    {
+        IsPuzzle3Completed = true;
     }
 
 
