@@ -7,6 +7,7 @@ public class AllPuzzlesCompletedScriptedEvent : MonoBehaviour
    [SerializeField] GameObject particleSystem1, particleSystem2;
    public void StartEndOfGame()
     {
+        print("game will end soon");
         StartCoroutine(IE_EndOfGame());
     }
 
@@ -14,8 +15,9 @@ public class AllPuzzlesCompletedScriptedEvent : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         particleSystem1.SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         particleSystem2.SetActive(true);
+        yield return new WaitForSeconds(3f);
 
         //add load next level logic
 

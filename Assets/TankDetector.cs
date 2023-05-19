@@ -15,13 +15,16 @@ public class TankDetector : MonoBehaviour
             if (other.tag == "blueTank" && other.tag == tankTag)
             {
                 tanksPuzzleManager.DoWhenBlueTankInPosition();
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<Renderer>().enabled = false;
+
+                Destroy(other.gameObject, 15f);
 
             }
             else if (other.tag == "redTank" && other.tag == tankTag)
             {
                 tanksPuzzleManager.DoWhenRedTankInPosition();
-                Destroy(other.gameObject);
+                other.gameObject.GetComponent<Renderer>().enabled = false;
+                Destroy(other.gameObject, 15f);
             }
         }
     }

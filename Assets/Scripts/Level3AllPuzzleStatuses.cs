@@ -27,7 +27,7 @@ public class Level3AllPuzzleStatuses : MonoBehaviour
 
     private void Update()
     {
-        if (allPuzzlesCompleted && levelShouldEnd)
+        if (IsPuzzle1Completed && IsPuzzle2Completed && IsPuzzle3Completed && levelShouldEnd)
         {
             print("all puzzles have been completed!");
             allPuzzlesCompletedEvent.Invoke();

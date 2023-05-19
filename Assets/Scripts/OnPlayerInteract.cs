@@ -7,17 +7,18 @@ using UnityEngine.Events;
 public class OnPlayerInteract : MonoBehaviour
 {
     [SerializeField] UnityEvent doOnInteract;
-    [SerializeField] private Transform originalButtonTransform;
+    [SerializeField] Transform originalButtonTransform;
+    [SerializeField] private Vector3 originalButtonPosition;
     [SerializeField] private Vector3 onButtonPressOriginalPosition;
     [SerializeField] private Vector3 onButtonPressChangedPosition;
 
-    [SerializeField] float howMuchShouldGoDown = 0.75f;
+    [SerializeField] float howMuchShouldGoDown = 0.15f;
 
     private void Awake()
     {
-        originalButtonTransform = transform;
-        onButtonPressChangedPosition = originalButtonTransform.position - new Vector3(0, howMuchShouldGoDown, 0);
-        onButtonPressOriginalPosition = originalButtonTransform.position;
+        originalButtonPosition = transform.position;
+        onButtonPressChangedPosition = originalButtonPosition - new Vector3(0, howMuchShouldGoDown, 0);
+        onButtonPressOriginalPosition = originalButtonPosition;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +27,7 @@ public class OnPlayerInteract : MonoBehaviour
         {
             print("hand touched lever " + this.gameObject.name);
             doOnInteract.Invoke();
-            originalButtonTransform.DOMove(onButtonPressChangedPosition, 0.5f);
+            originalButtonTransform.DOMove(onButtonPressChangedPosition, 0.2f);
         }
     }
 
@@ -35,7 +36,7 @@ public class OnPlayerInteract : MonoBehaviour
         if (other.tag.Equals("Hand"))
         {
             print("restoring lever original pos;");
-            originalButtonTransform.DOMove(onButtonPressOriginalPosition, 0.5f);
+            originalButtonTransform.DOMove(onButtonPressOriginalPosition, 0.2f);
         }
     }
 
