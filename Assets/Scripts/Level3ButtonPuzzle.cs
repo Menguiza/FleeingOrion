@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Level3ButtonPuzzle : MonoBehaviour
 {
     public int expectedIndex;
+    [SerializeField] Level3AllPuzzleStatuses level3AllPuzzleStatuses;
 
     [SerializeField] GameObject correctIndicator;
 
@@ -42,6 +43,9 @@ public class Level3ButtonPuzzle : MonoBehaviour
                     puzzleCompleted = true;
                     StartCoroutine(flashMaterialPuzzleFinished());
                     Debug.Log("Puzzle completed!");
+                    level3AllPuzzleStatuses.IsPuzzle1Completed = true;
+
+
                 }
 
                 return;
