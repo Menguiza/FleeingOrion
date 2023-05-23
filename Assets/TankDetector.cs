@@ -12,6 +12,7 @@ public class TankDetector : MonoBehaviour
         if (other.tag == tankTag)
         {
             print("tank " + tankTag + " is in place!");
+
             if (other.tag == "blueTank" && other.tag == tankTag)
             {
                 tanksPuzzleManager.DoWhenBlueTankInPosition();

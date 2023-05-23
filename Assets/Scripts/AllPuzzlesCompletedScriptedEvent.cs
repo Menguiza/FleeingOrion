@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AllPuzzlesCompletedScriptedEvent : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class AllPuzzlesCompletedScriptedEvent : MonoBehaviour
         yield return new WaitForSeconds(3f);
         particleSystem2.SetActive(true);
         yield return new WaitForSeconds(3f);
-
+        SceneManager.LoadScene("End Of Game");
         //add load next level logic
 
 
