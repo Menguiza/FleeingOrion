@@ -30,6 +30,7 @@ public class FinishCondition_Zone2 : MonoBehaviour
     public void Correct()
     {
         BottonPressed.Invoke();
+        correctPressed = true;
         message.text = "Combustible cargado!";
     }
 
